@@ -12,15 +12,5 @@ public class Task2 {
         } catch (WeakEngineException e) {
             System.out.println(e);
         }
-    }}
-
-
-
-
-
-
-
-
-
-
-
+    }
+}

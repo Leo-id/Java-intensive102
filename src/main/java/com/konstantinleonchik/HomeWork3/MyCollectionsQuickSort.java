@@ -17,7 +17,6 @@ public class MyCollectionsQuickSort<T> {
         quickSort(MyList, low, high, comparator);
     }
 
-
     /**
      * Вспомогательный метод для метода sort с использованием рекурсии
      *

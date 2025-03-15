@@ -121,5 +121,49 @@ public class MyArryList<T> implements MyList<T> {
         }
     }
 
+    /**
+     * Метод запускает сортировку слиянием
+     */
+    public void mergeSort() {
+        if (size > 1) {   // проверят что в списке больше одного элемента для сортировки
+            Object[] newList = new Object[size];
+            mergeSort(0, size - 1, newList);   // вызывает рекурсивный метод
+        }
+    }
 
+    private void mergeSort(int left, int right, Object[] newList) {
+        if (left < right) {
+            int mid = left + (right - left) / 2; // определяем середину списка
+            mergeSort(left, mid, newList);     // сортировка левой части
+            mergeSort(mid + 1, right, newList); // сортировка правой части
+            merge(left, mid, right, newList);   // вызываем метод merge для слияния двух половин
+        }
+    }
+
+    private void merge(int left, int mid, int right, Object[] newList) {
+        for (int i = left; i <= right; i++) {
+            newList[i] = list[i];
+        }
+
+        int i = left;       // Индекс левой части
+        int j = mid + 1;    // Индекс правой части
+        int k = left;       // Индекс для массива куда будет помещен результат
+
+        /* сравниваем каждый элемент одного массива с элементами другого
+     и помещаем меньшее значение в финальный массив */
+
+        while (i <= mid && j <= right) {
+            if (((Comparable<T>) newList[i]).compareTo((T) newList[j]) <= 0) {
+                list[k++] = (T) newList[i++];
+            } else {
+                list[k++] = (T) newList[j++];
+            }
+        }
+        while (i <= mid) {
+            list[k++] = (T) newList[i++];
+        }
+        while (j <= right) {
+            list[k++] = (T) newList[j++];
+        }
+    }
 }

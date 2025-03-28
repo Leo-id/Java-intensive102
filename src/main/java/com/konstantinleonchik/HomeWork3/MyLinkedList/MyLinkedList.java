@@ -65,7 +65,7 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void add(T element, int index) {
-        chekIndex(index);
+        checkIndex (index);
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
@@ -129,7 +129,7 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void removeAt(int index) {
-        chekIndex(index);
+        checkIndex (index);
         Node<T> node = getNode(index);
         Node<T> nodeNext = node.next;
         Node<T> nodePrevious = node.previous;
@@ -178,7 +178,7 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void set(T element, int index) {
-        chekIndex(index);
+        checkIndex (index);
         Node<T> current = first;
         for (int i = 0; i < index; i++) {
             current = current.next; // Переходим к элементу с нужным индексом
@@ -195,7 +195,7 @@ public class MyLinkedList<T> implements MyList<T> {
      *                                   размеру коллекции, то будет выброшено исключение "The index is incorrect!"
      *                                   используем данный метод во всех других методах гле в параметре есть index
      */
-    private void chekIndex(int index) {
+    private void checkIndex (int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("The index is incorrect!");
         }

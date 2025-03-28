@@ -2,7 +2,7 @@ package com.konstantinleonchik.HomeWork3.MyArrayList;
 
 import com.konstantinleonchik.HomeWork3.MyList;
 
-public class MyArryList<T> implements MyList<T> {
+public class MyArrayList<T> implements MyList<T> {
 
     /**
      * Создаем коллекцию
@@ -17,14 +17,14 @@ public class MyArryList<T> implements MyList<T> {
     private int size = 0;
     private final int def_capasity = 10;
 
-    MyArryList(int capasity) {
+    MyArrayList(int capasity) {
         if (capasity <= 0) {
             throw new IllegalArgumentException("Capasity<=0");
         } else
             list = (T[]) new Object[capasity];
     }
 
-    public MyArryList() {
+    public MyArrayList() {
         list = (T[]) new Object[def_capasity];
     }
 
@@ -43,7 +43,7 @@ public class MyArryList<T> implements MyList<T> {
 
     @Override
     public void add(T element, int index) {
-        chekIndex(index);
+        checkIndex (index);
         if (size >= list.length) {
             T[] newlist = (T[]) new Object[list.length * 2];
             for (int i = 0; i < list.length; i++) {
@@ -60,14 +60,14 @@ public class MyArryList<T> implements MyList<T> {
 
     @Override
     public T get(int index) {
-        chekIndex(index);
+        checkIndex (index);
         T newList = list[index];
         return newList;
     }
 
     @Override
     public void removeAt(int index) {
-        chekIndex(index);
+        checkIndex (index);
         for (int i = index; i < size - 1; i++) {
             list[i] = list[i + 1];
         }
@@ -103,7 +103,7 @@ public class MyArryList<T> implements MyList<T> {
 
     @Override
     public void set(T element, int index) {
-        chekIndex(index);
+        checkIndex (index);
         list[index] = element;
     }
 
@@ -115,7 +115,7 @@ public class MyArryList<T> implements MyList<T> {
      *                                   размера коллекции, то будет выброшено исключение "The index is incorrect!"
      *                                   используем данный метод во всех других методах гле в параметре есть index
      */
-    private void chekIndex(int index) {
+    private void checkIndex (int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("The index is incorrect!");
         }

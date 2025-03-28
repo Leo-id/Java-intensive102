@@ -8,7 +8,7 @@ import java.util.Comparator;
  * Класс для тестирования MyArrayList и всех его методов
  */
 
-public class TestArryList {
+public class TestArrayList {
     public static void main(String[] args) {
 
         /**
@@ -17,7 +17,7 @@ public class TestArryList {
          * выводим на экран
          * и проверяем пустой лист или нет (должно быть false)
          */
-        MyArryList<String> myArryList1 = new MyArryList<>();
+        MyArrayList<String> myArryList1 = new MyArrayList<>();
 
         for (int i = 0; i < 100000; i++) {
             myArryList1.add("mama" + i);
@@ -36,7 +36,7 @@ public class TestArryList {
          * выводим на экран
          * и проверяем пустой лист или нет (должно быть true)
          */
-        MyArryList<Integer> myArryList2 = new MyArryList<>();
+        MyArrayList<Integer> myArryList2 = new MyArrayList<>();
         myArryList2.add(5);
         myArryList2.add(2);
         myArryList2.add(9);
@@ -60,7 +60,7 @@ public class TestArryList {
          * производим быструю сортировку
          * выводим на экран
          */
-        MyArryList<Object> myArryList3 = new MyArryList<>();
+        MyArrayList<Object> myArryList3 = new MyArrayList<>();
         myArryList3.add("Привет! ");
         myArryList3.add("Меня ");
         myArryList3.add("зовут ");
@@ -79,7 +79,7 @@ public class TestArryList {
          *  производим сортировку слиянием
          *  выводим на экран
          **/
-        MyArryList<Object> myArryList4 = new MyArryList<>();
+        MyArrayList<Object> myArryList4 = new MyArrayList<>();
         myArryList4.add("Привет! ");
         myArryList4.add("D ");
         myArryList4.add("F ");

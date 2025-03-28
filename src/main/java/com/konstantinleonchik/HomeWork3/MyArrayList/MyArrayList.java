@@ -30,13 +30,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public void add(T element) {
-        if (size >= list.length) {
-            T[] newlist = (T[]) new Object[list.length * 2];
-            for (int i = 0; i < list.length; i++) {
-                newlist[i] = list[i];
-            }
-            list = newlist;
-        }
+        ensureCapacity();
         list[size] = element;
         size++;
     }
@@ -44,19 +38,26 @@ public class MyArrayList<T> implements MyList<T> {
     @Override
     public void add(T element, int index) {
         checkIndex (index);
-        if (size >= list.length) {
-            T[] newlist = (T[]) new Object[list.length * 2];
-            for (int i = 0; i < list.length; i++) {
-                newlist[i] = list[i];
-            }
-            list = newlist;
-        }
+        ensureCapacity();
         for (int i = size; i > index; i--) {
             list[i] = list[i - 1];
         }
         list[index] = element;
         size++;
     }
+
+    /**
+     * Общая логика проверки и увеличения массива вынесена в метод ensureCapacity()
+     */
+    private void ensureCapacity() {
+        if (size >= list.length) {
+            T[] newlist = (T[]) new Object[list.length * 2];
+            System.arraycopy(list, 0, newlist, 0, list.length);
+            list = newlist;
+        }
+    }
+
+
 
     @Override
     public T get(int index) {
@@ -120,6 +121,10 @@ public class MyArrayList<T> implements MyList<T> {
             throw new IndexOutOfBoundsException("The index is incorrect!");
         }
     }
+
+
+
+
 
     /**
      * Метод запускает сортировку слиянием
